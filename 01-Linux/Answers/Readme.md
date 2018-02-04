@@ -19,4 +19,4 @@
 	Filtering the output for the relevant fields and sorting them by shell ([*info*](https://stackoverflow.com/questions/21584727/using-linux-cut-sort-and-uniq))
 5. Create a script for finding duplicate images based on their content (tip: hash or checksum) You may look in the internet for ideas, Do not forget to include the source of any code you use.
 
-	Check myscript.sh file in the [Answers](https://github.com/santiag0m/IBIO4680/tree/master/01-Linux/Answers) directory.
+	Check [myscript.sh](https://github.com/santiag0m/IBIO4680/tree/master/01-Linux/Answers/myscript.sh).
