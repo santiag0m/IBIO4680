@@ -27,30 +27,33 @@
 
 7. What is the disk size of the uncompressed dataset, How many images are in the directory 'BSR/BSDS500/data/images'?
 
-	The disk size of the uncompressed dataset is obtained  with the command ``du -sh BSR``.
-	![Image_01]()
-	The number of images in the directory is found with the commands:
-	``cd BSR/BSDS500/data/images/``
-	``find . -name "*.jpg" -exec identify {} \; | grep -c .jpg``
-	![Image_02]()
+	The disk size of the uncompressed dataset is obtained  with the command ``du -sh BSR``. 
+	![Image_01](https://github.com/santiag0m/IBIO4680/blob/master/01-Linux/Answers/images/image_01.png)
+
+	The number of images in the directory is found with the commands:  
+	``cd BSR/BSDS500/data/images/`` 
+	``find . -name "*.jpg" -exec identify {} \; | grep -c .jpg`` 
+	![Image_02](https://github.com/santiag0m/IBIO4680/blob/master/01-Linux/Answers/images/image_02.png)
 
 8. What is their resolution, what is their format?
-	We can know their resolution and their format with the following command:
-	``find . -name "*.jpg" -exec identify {} \;``
-	![Image_3]()
+
+	We can know their resolution and their format with the following command:  
+	``find . -name "*.jpg" -exec identify {} \;``  
+	![Image_3](https://github.com/santiag0m/IBIO4680/blob/master/01-Linux/Answers/images/image_03.png) 
 
 9. How many of them are in landscape orientation (opposed to portrait)?
-	The number of images in landscape orientation is given by the command
-	``find . -name "*.jpg" -exec identify -format "\n%[fx:(w>h)?1:0]"  {} \; | grep -c 1``
-	![Image_04]()
+
+	The number of images in landscape orientation is given by the command 
+	``find . -name "*.jpg" -exec identify -format "\n%[fx:(w>h)?1:0]"  {} \; | grep -c 1`` 
+	![Image_04](https://github.com/santiag0m/IBIO4680/blob/master/01-Linux/Answers/images/image_04.png) 
 
 10. Crop all images to make them square (256x256). Tip: do not forget about imagemagick.
 	
-	To crop all images and make then square, a new folder is created where the images are copied and then overwritten with the corresponding cropped images. It is made with the followings commands:
-	``cd ..``
-	``mkdir crop_images``
-	``cp -r ./images/ crop_images``
-	``cd crop_images``
-	``find . -name "*.jpg" -exec convert -crop 256x256+0+0 {} {} \;``
-	``find . -name "*.jpg" -exec identify {} \;``
-	![Image_05]()
+	To crop all images and make then square, a new folder is created where the images are copied and then overwritten with the corresponding cropped images. It is made with the followings commands: 
+	``cd ..`` 
+	``mkdir crop_images`` 
+	``cp -r ./images/ crop_images`` 
+	``cd crop_images`` 
+	``find . -name "*.jpg" -exec convert -crop 256x256+0+0 {} {} \;`` 
+	``find . -name "*.jpg" -exec identify {} \;`` 
+	![Image_05](https://github.com/santiag0m/IBIO4680/blob/master/01-Linux/Answers/images/image_05.png)
