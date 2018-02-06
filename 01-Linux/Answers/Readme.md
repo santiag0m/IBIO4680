@@ -50,7 +50,7 @@
 10. Crop all images to make them square (256x256). Tip: do not forget about imagemagick.
 	
 	To crop all images and make then square, a new folder is created where the images are copied and then overwritten with the corresponding cropped images. It is made with the followings commands: 
-	``cd ..``\ 
+	``cd ..``<br/> 
 	``mkdir crop_images``\ 
 	``cp -r ./images/ crop_images``\ 
 	``cd crop_images``\ 
