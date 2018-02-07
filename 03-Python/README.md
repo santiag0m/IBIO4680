@@ -9,11 +9,13 @@ This is a basic tutorial on Python. We aim to cover general topics such as synta
 - [Sharelatex](https://www.sharelatex.com)
 - [Overleaf](https://www.overleaf.com/)
 
-### FYI - Requierements and dependencies installation (Virtual machines are ready)
+## FYI - Requierements and dependencies installation
 It is recommended to use Python [Anaconda](https://www.continuum.io/downloads) and its powerful package manager, [conda](https://github.com/conda/conda) to install additional packages.
 
 --------------
+
 # Homework
+
 Please select one dataset of your preference. If you do not have one, you might use [BDSD](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.htm). Your dataset _SHOULD_ have labels. 
 
 Write a **python** script that does the following things:
@@ -42,5 +44,10 @@ Notes:
 - Once the dataset has been downloaded, the script must skip step 1. 
 - If you make use of a module that is rather uncommon (I do not know, nobody knows, internet is weird), just make sure that your script internally install it.
 
+--------------
+
+## Acknowledgements
+
+Special thanks to @ftorres11 and @andfoy for developing part of this introductory repository during July 2017 for the Biomedical Computer Vision (BCV) Summer. 
 
 
