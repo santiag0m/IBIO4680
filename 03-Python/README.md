@@ -20,7 +20,7 @@ Please select one dataset of your preference. If you do not have one, you might 
 
 Write a **python** script that does the following things:
 1. Download (and untar if the case) your dataset. 
-2. Choose _randomly_ an specific number (Let's say **N**) of those images. Resize them to 256x256, and save them in a new folder. 
+2. Choose _randomly_ an specific number (Let's say **N**, N>6) of those images. Resize them to 256x256, and save them in a new folder. 
 3. Plot your original **N** images along the corresponding labels. 
 4. Finally, save the variables as a _dict_, images and labels. For this purpose, you may use _numpy_, _pickle_, or any module of your preference.
 
@@ -43,6 +43,10 @@ Your script **must** be ONE SINGLE excecutable script that does all the aforemen
 Notes:
 - Once the dataset has been downloaded, the script must skip step 1. 
 - If you make use of a module that is rather uncommon (I do not know, nobody knows, internet is weird), just make sure that your script internally install it.
+- Print the processing time at the end of the script. _time_ is the module you need fot it.
+
+Bonus: 
+- I could contemplate the posibility of a bonus if someone does remarkable job by reducing to a minimum the processing time. Less is more. 
 
 --------------
 
