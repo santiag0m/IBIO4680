@@ -32,13 +32,15 @@ On the other hand, if you choose a detection/segmentation problem, you might do 
 
 ![bsds](imgs/bsds.png)
 
+Where the first row are the original images, second and third row are the boundaries and segmentation grountruth labels respectively. 
+
 ---
 
 Your script **must** be ONE SINGLE excecutable script that does all the aforementioned items just by typing: `./run.py`
 
 Notes:
 - Once the dataset has been downloaded, the script must skip step 1. 
-- If you make use of a module that is rather uncommon (I do not know, nobody knows, internet is weird), just make sure that your script internally install it .
+- If you make use of a module that is rather uncommon (I do not know, nobody knows, internet is weird), just make sure that your script internally install it.
 
 
 
