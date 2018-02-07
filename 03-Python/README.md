@@ -48,6 +48,6 @@ Notes:
 
 ## Acknowledgements
 
-Special thanks to @ftorres11 and @andfoy for developing part of this introductory repository during July 2017 for the Biomedical Computer Vision (BCV) Summer. 
+Special thanks to @ftorres11 and @andfoy for developing part of this introductory repository during July 2017 for the Biomedical Computer Vision (BCV). 
 
 
