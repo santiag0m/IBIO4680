@@ -14,22 +14,31 @@ It is recommended to use Python [Anaconda](https://www.continuum.io/downloads) a
 
 --------------
 # Homework
-Please select one dataset of your preference. If you do not have one, you might use [BDSD](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.htm). Your dataset _MUST_ have labels. 
+Please select one dataset of your preference. If you do not have one, you might use [BDSD](https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.htm). Your dataset _SHOULD_ have labels. 
 
 Write a **python** script that does the following things:
 1. Download (and untar if the case) your dataset. 
-2. Choose _randomly_ an specific number (Let's say **N**. I'll explain it later) of those images. And, save them on a new and independent folder. 
-3. Plot those images as a single plot i.e., N images in one figure. 
-4. Using a different figure, plot your original images along the corresponding labels. 
+2. Choose _randomly_ an specific number (Let's say **N**) of those images. Resize them to 256x256, and save them in a new folder. 
+3. Plot your original **N** images along the corresponding labels. 
+4. Finally, save the variables as a _dict_, images and labels. For this purpose, you may use _numpy_, _pickle_, or any module of your preference.
 
 Let's explore the last item. For instance, if you choose a classification problem, you might do it by showing the original images and somewhat saying the label of each one. Ej:
+
 ![fake](imgs/fake.png)
+
 Where the label is depicted at the center of each image.
 
 On the other hand, if you choose a detection/segmentation problem, you might do it by showing the original images along the corresponding groundtruths. Ej:
+
 ![bsds](imgs/bsds.png)
-Your script **must** be an excecutable script that does all the aforementioned items just by typing:
-`./run.py`
+
+---
+
+Your script **must** be ONE SINGLE excecutable script that does all the aforementioned items just by typing: `./run.py`
+
+Notes:
+- Once the dataset has been downloaded, the script must skip step 1. 
+- If you make use of a module that is rather uncommon (I do not know, nobody knows, internet is weird), just make sure that your script internally install it .
 
 
 
