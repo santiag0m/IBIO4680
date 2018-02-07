@@ -19,7 +19,7 @@
 	Filtering the output for the relevant fields and sorting them by shell ([*info*](https://stackoverflow.com/questions/21584727/using-linux-cut-sort-and-uniq))
 5. Create a script for finding duplicate images based on their content (tip: hash or checksum) You may look in the internet for ideas, Do not forget to include the source of any code you use.
 
-	Check [myscript.sh](https://github.com/santiag0m/IBIO4680/tree/master/01-Linux/Answers/myscript.sh).
+	Check [myscript.sh](https://github.com/santiag0m/IBIO4680/tree/master/01-Linux/Answers/myscript.sh), modified one of the scripts found [*here*](https://unix.stackexchange.com/questions/71176/find-duplicate-files)
 
 6. Download the bsds500 image segmentation database and decompress it (keep it in you hard drive, we will come back over this data in a few weeks).
 	
