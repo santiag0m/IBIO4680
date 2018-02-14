@@ -58,13 +58,16 @@ In order to approximate how the image would look from different distances we can
 ### Creating a blended image
 
 In this section you need to play with the Gaussian Pyramid as well as the Laplacian Pyramid.
- - **Gaussian Pyramid**: Apply Gaussian filter over image, then downsample by a factor of 2. 
+ - **Gaussian Pyramid**: Apply Gaussian filter over image, then downsample it by a factor of 2. 
 
-     Pseudocode: `pyramid_down = downsampling(gauss_filter(image), factor=2)`
+     Pseudocode: 
+	`pyramid_down = downsampling(gauss_filter(image), factor=2)`
+	`pyramid_up = upsampling(gauss_filter(image), factor=2)`
 
  - **Laplacian Pyramid**: A level in Laplacian Pyramid is formed by the difference between that level in Gaussian Pyramid and expanded version of its upper level in Gaussian Pyramid. 
 
-     Psudocode: `Subtract(image, pyramid_up(pyramid_down(image)))` 
+     Psudocode: 
+	`Subtract(image, pyramid_up(pyramid_down(image)))` 
 
      _((Watch out how negative values are handled))_
 
@@ -74,7 +77,7 @@ In order to create a blended image:
   3. Add the corresponding Laplacian Pyramid.
   4. Repeat 2-3 until reach optimal size. 
 
-With/without pyramid blending:
+**Without/with pyramid blending:**
 
 ![Obama - Trump - Direct](imgs/ObamaTrump_Direct_blending.jpg)
 ![Obama - Trump - Blended](imgs/ObamaTrump_Pyramid_blending.jpg)
