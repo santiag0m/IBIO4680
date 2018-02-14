@@ -71,8 +71,9 @@ In order to create a blended image all you need to do is
   4. Repeat 2-3 until reach optimal size. 
 
 With/without pyramid blending:
-![Obama - Trump - Direct](imgs/ObamaTrump_Direct_blending.png)
-![Obama - Trump - Blended](imgs/ObamaTrump_Pyramid_blending.png)
+
+![Obama - Trump - Direct](imgs/ObamaTrump_Direct_blending.jpg)
+![Obama - Trump - Blended](imgs/ObamaTrump_Pyramid_blending.jpg)
 
 ## Your Turn
 
