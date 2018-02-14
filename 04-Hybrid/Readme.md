@@ -58,16 +58,20 @@ In order to approximate how the image would look from different distances we can
 ### Creating a blended image
 
 In this section you need to play with the Gaussian Pyramid as well as the Laplacian Pyramid.
- - Gaussian Pyramid: Apply Gaussian filter over image, then downsample by a factor of 2. 
-     Pseudocode: `pyramid_down = downsampling(gauss_filter(image), factor=2)`
- - Laplacian Pyramid: A level in Laplacian Pyramid is formed by the difference between that level in Gaussian Pyramid and expanded version of its upper level in Gaussian Pyramid. 
-     Psudocode: `Subtract(image, pyramid_up(pyramid_down(image)))` 
-     ((Watch out how negative values are handled))
+ - **Gaussian Pyramid**: Apply Gaussian filter over image, then downsample by a factor of 2. 
 
-In order to create a blended image all you need to do is
-  1. Merge (concatenate halves) the two images in a low resolution pyramid
-  2. Gaussian Pyramid up
-  3. Add the corresponding half Laplacian Pyramid
+     Pseudocode: `pyramid_down = downsampling(gauss_filter(image), factor=2)`
+
+ - **Laplacian Pyramid**: A level in Laplacian Pyramid is formed by the difference between that level in Gaussian Pyramid and expanded version of its upper level in Gaussian Pyramid. 
+
+     Psudocode: `Subtract(image, pyramid_up(pyramid_down(image)))` 
+
+     _((Watch out how negative values are handled))_
+
+In order to create a blended image:
+  1. Merge (concatenate halves) the two images in a low resolution pyramid.
+  2. Gaussian Pyramid up.
+  3. Add the corresponding Laplacian Pyramid.
   4. Repeat 2-3 until reach optimal size. 
 
 With/without pyramid blending:
