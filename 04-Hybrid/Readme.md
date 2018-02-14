@@ -61,12 +61,15 @@ In this section you need to play with the Gaussian Pyramid as well as the Laplac
  - **Gaussian Pyramid**: Apply Gaussian filter over image, then downsample it by a factor of 2. 
 
      Pseudocode: 
+
 	`pyramid_down = downsampling(gauss_filter(image), factor=2)`
+
 	`pyramid_up = upsampling(gauss_filter(image), factor=2)`
 
  - **Laplacian Pyramid**: A level in Laplacian Pyramid is formed by the difference between that level in Gaussian Pyramid and expanded version of its upper level in Gaussian Pyramid. 
 
      Psudocode: 
+
 	`Subtract(image, pyramid_up(pyramid_down(image)))` 
 
      _((Watch out how negative values are handled))_
