@@ -3,7 +3,8 @@ import scipy.io # Import mat files
 import cv2 # Image manipulation
 import os # Directory listing
 import fnmatch # Find extension files
-import pickle
+import pickle # File IO
+import time # Time ...
 from subprocess import call # Run shell commands
 
 
