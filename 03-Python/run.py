@@ -1,12 +1,24 @@
 import numpy as np # Numeric arrays
+
 import scipy.io # Import mat files
+
 import cv2 # Image manipulation
+
 import os # Directory listing
+
 import fnmatch # Find extension files
+
 import pickle # File IO
+
 import time # Time ...
+
+import matplotlib.pyplot as plt
+
 from subprocess import call # Run shell commands
 
+from imutils import build_montages
+
+from shutil import copyfile
 
 # Dataset download
 
@@ -43,18 +55,50 @@ if len(images) != len(truth):
 n = len(images)
 idx = np.random.randint(0,n-1,7) # 7 random images
 
-selected = []
+call(['mkdir','Image_selected'])
+
 
 for iidx in idx:
-    img = cv2.imread(os.path.join(imagepath,images[iidx]))
-    img = cv2.resize(img,(256,256))
-    matvar = scipy.io.loadmat(os.path.join(truthpath,truth[iidx]))
-    label = matvar['groundTruth']
-    mdict = ['images':img,'truth':label]
-    selected.append(mdict)
+    
+img = cv2.imread(os.path.join(imagepath,images[iidx]))
+    
+img = cv2.resize(img,(256,256))
+    
+copyfile(os.path.join(imagepath,images[iidx]), os.path.join(os.getcwd(),'Image_selected',images[iidx]))
+    
+selected.append(img)
+    
 
-f = open('myimages','wb')
+
+for iidx in idx:
+    
+matvar = scipy.io.loadmat(os.path.join(truthpath,truth[iidx]))
+    
+label = matvar['groundTruth']
+    
+annotation = label[0][0][0][0][0]
+    
+annotation = np.round(annotation - np.min(annotation))*(255/(np.max(annotation)-np.min(annotation)))
+    
+annotation = cv2.applyColorMap(np.uint8(annotation), cv2.COLORMAP_HSV)
+    
+selected.append(annotation)
+
+    
+
+
+montages = build_montages(selected, (256, 256), (4, 2))
+
+
+
+for montage in montages:
+    
+cv2.imshow("Montage", montage)
+
+f = open(os.path.join(os.getcwd(),'Image_selected','myimages'),'wb')
+
 pickle.dump(selected,f)
+
 f.close()
 
 # End timer
