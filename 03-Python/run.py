@@ -55,8 +55,12 @@ if len(images) != len(truth):
 n = len(images)
 idx = np.random.randint(0,n-1,7) # 7 random images
 
-call(['mkdir','Image_selected'])
+if not os.path.isdir(os.path.join(os.getcwd(),'Image_selected')):
+   call(['mkdir','Image_selected'])
 
+
+
+selected = []
 
 for iidx in idx:
     
