@@ -42,9 +42,9 @@ for file in os.listdir(imagepath):
 images = matches
 
 matches = []
-for file in os.listdir(truthpath):
-    if fnmatch.fnmatch(file,'*mat'):
-        matches.append(file)
+for imp in images:
+    trp = imp[:-3]+'mat'
+    matches.append(trp)
 truth = matches
 
 if len(images) != len(truth):
@@ -80,7 +80,7 @@ for iidx in idx:
 
 
 
-montages = build_montages(selected, (256, 256), (4, 2))
+montages = build_montages(selected, (256, 256), (7, 2))
 
 
 
