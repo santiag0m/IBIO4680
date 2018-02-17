@@ -1,23 +1,13 @@
 import numpy as np # Numeric arrays
-
 import scipy.io # Import mat files
-
 import cv2 # Image manipulation
-
 import os # Directory listing
-
 import fnmatch # Find extension files
-
 import pickle # File IO
-
 import time # Time ...
-
 import matplotlib.pyplot as plt
-
 from subprocess import call # Run shell commands
-
 from imutils import build_montages
-
 from shutil import copyfile
 
 # Dataset download
@@ -61,15 +51,16 @@ if not os.path.isdir(os.path.join(os.getcwd(),'Image_selected')):
 
 
 selected = []
-
+dictionary = {}
+dictionary.setdefault('Original', [])
 for iidx in idx:
     img = cv2.imread(os.path.join(imagepath,images[iidx]))
     img = cv2.resize(img,(256,256))
     copyfile(os.path.join(imagepath,images[iidx]), os.path.join(os.getcwd(),'Image_selected',images[iidx]))
     selected.append(img)
-    
+    dictionary['Original'].append(img)
 
-
+dictionary.setdefault('Annotation', [])
 for iidx in idx:
     matvar = scipy.io.loadmat(os.path.join(truthpath,truth[iidx]))
     label = matvar['groundTruth']
@@ -77,18 +68,17 @@ for iidx in idx:
     annotation = np.round(annotation - np.min(annotation))*(255/(np.max(annotation)-np.min(annotation)))
     annotation = cv2.applyColorMap(np.uint8(annotation), cv2.COLORMAP_HSV)
     selected.append(annotation)
-
-
+    dictionary['Annotation'].append(annotation)
 
 montages = build_montages(selected, (256, 256), (7, 2))
 
 
-
 for montage in montages:
     cv2.imshow("Montage", montage)
-    f = open(os.path.join(os.getcwd(),'Image_selected','myimages'),'wb')
-    pickle.dump(selected,f)
-    f.close()
+    
+f = open(os.path.join(os.getcwd(),'Image_selected','dictionary'),'wb')
+pickle.dump(dictionary,f)
+f.close()
 
 # End timer
 
