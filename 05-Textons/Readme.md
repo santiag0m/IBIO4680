@@ -195,7 +195,7 @@ Upload the code you used into a directory named 'code', by extraordinary results
 ----
 
 ## Tip for python debugging from terminal
-As I told you, you can debug in Python as you usually does it in Matlab (those pretty red points that you click on). For Python is a little different as you do not have an interface (unless you have Spyder, but, let's assume you do not). For this purpose you can use `ipython` (you might have note I love it) and a module called `ipdb`.
+As I told you, you can debug in Python as you usually does it in Matlab (those pretty red points that you click on). For Python is a little different as you do not have an interface (unless you have Spyder, but, let's assume you do not). For this purpose you can use `ipython` (you might have noticed that I love it) and a module called `ipdb`.
 
 Just `import ipdb` and call `ipdb.set_trace()` wherever you want the code to make a pause and interact with. That's it. enjoy it. **It really changed my life**. 
 
