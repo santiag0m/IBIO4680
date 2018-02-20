@@ -14,7 +14,7 @@ You can download it from the following mirrors in the university (might be faste
 
 -   http: http://157.253.63.7/textures.tar.gz
 
-Create a folder called *data* in order to locate your dataset there. 
+Create a folder called *data* and locate your dataset there. 
     
 ## Image Representation
 
@@ -137,6 +137,7 @@ D = np.linalg.norm(histc(tmapBase2.flatten(), np.arange(k))/tmapBase2.size - \
 After the images are represented using a texton dictionary, train and evaluate a classifier using the provided database. Notice that the images in the mirror have been already divided into train and test sets, use this split. This was done by randomly assigning 10 images from each category to the test. Try two different classifiers:
 
 -   **Nearest neighbour:** Use intersection of histograms or Chi-Square metrics.
+
 	Matlab: 
 	- [KNN Clasifiers](https://www.mathworks.com/help/stats/classification-using-nearest-neighbors.html#btap7k2)
 	- [distance metrics] (https://www.mathworks.com/help/stats/classification-using-nearest-neighbors.html).
@@ -146,6 +147,7 @@ After the images are represented using a texton dictionary, train and evaluate a
 	- [scikit - KNN](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html).
 
 -   **Random forest:** 
+
 	Matlab:
 	- Use the matlab [tree bagger](http://www.mathworks.com/help/stats/treebagger.html) function. See an example at [kawahara.ca](http://kawahara.ca/matlab-treebagger-example/)
 
@@ -192,13 +194,13 @@ Upload the code you used into a directory named 'code', by extraordinary results
 
 ----
 
-##Tip for python debugging from terminal
+## Tip for python debugging from terminal
 As I told you, you can debug in Python as you usually does it in Matlab (those pretty red points that you click on). For Python is a little different as you do not have an interface (unless you have Spyder, but, let's assume you do not). For this purpose you can use `ipython` (you might have note I love it) and a module called `ipdb`.
 
-Just `import ipdb` and call `ipdb.set_trace()` wherever you want the code make a pause to interact with. That's it. enjoy it. It changed my life. 
+Just `import ipdb` and call `ipdb.set_trace()` wherever you want the code to make a pause and interact with. That's it. enjoy it. **It really changed my life**. 
 
 ----
 
 ## DISCLAIMER
-It is the very first time that `Python scripts` are provided. Therefore, they are in beta mode. Do not lose your mind if you find any bug or error. If so, kindly report this bug to me, I'll be happy to fix it. 
+It is the very first time that `Python scripts` are provided. Therefore, they are in *beta* mode. Please, do not lose your mind if you find any bug or error. If so, kindly report this bug to me, I'll be happy to fix it. 
 
