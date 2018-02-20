@@ -1,4 +1,4 @@
-# Lab 5 - Features 
+# Lab 05 - Textons 
 
 In this lab you will use a strategy to represent images using Textons. Then you will train, and evaluate a classifier based on the texton representation. 
 
