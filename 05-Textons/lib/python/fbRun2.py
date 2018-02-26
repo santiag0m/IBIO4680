@@ -28,5 +28,5 @@ def fbRun(fb,im):
                 fim[i][j] = scipy.signal.convolve2d(impad, fb[i][j], 'same')
             else:
                 fim[i][j] = fftconvolve(impad,fb[i][j])
-            fim[i][j] = fim[i][j][0:2*r,0:2*r]
+            fim[i][j] = fim[i][j][-r:r,-r:r]
     return fim
