@@ -140,6 +140,11 @@ Discuss the results
 
 The report should have max 5 pages (**English**), if it is necessary use any additional pages for references and images **only**. Use the standard CVPR sections: abstract, introduction (again, be concise), materials and methods, results, conclusions and references. There is no need for an 'State of the art' section.
 
+## Deliverable (python users)
+
+**Your script must be an executable file with the #!.. at the beginning of the file. This opening line must be consistent with the python version you are using**. For instance:
+`#!/usr/local/bin/python2` or `#!/usr/local/bin/python3`.
+
 ## Tip
 
 - The module you need to move across color spaces is `skimage`. For instance:
