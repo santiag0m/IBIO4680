@@ -1,4 +1,4 @@
-# Segmentation practice
+# Segmentation Lab
 
 In this lab you will code several well known segemetation strategies and then apply them on a small set of images with grundtruth annotations. 
 
@@ -147,7 +147,7 @@ The report should have max 5 pages (**English**), if it is necessary use any add
 
 ## Tip
 
-- The module you need to move across color spaces is `skimage`. For instance:
+- `skimage` is the module you are looking for in order to move across space colors. For instance:
 
 ```python
 from skimage import io, color
