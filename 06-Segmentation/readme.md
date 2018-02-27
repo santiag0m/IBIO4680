@@ -58,7 +58,7 @@ colormap colorcube %or another colormap that you like https://la.mathworks.com/h
 ```
 
 ```python
-plt.imshow(segm, cmap=plt.get_cmap('tab20b')) %or another colormap that you like https://matplotlib.org/examples/color/colormaps_reference.html
+plt.imshow(segm, cmap=plt.get_cmap('tab20b')) #or another colormap that you like https://matplotlib.org/examples/color/colormaps_reference.html
 plt.show()
 ```
 
