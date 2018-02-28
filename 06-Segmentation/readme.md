@@ -9,9 +9,9 @@ Try to develop quality code, you will be using it for the next Lab.
 
 The data for this lab can be downloaded from the course server using http:
 
-- http://157.253.63.7/Lab5Images.tar.gz
+- http://157.253.63.7/BSDS_tiny.zip
 
-It is a small, randomly selected, subset of the BSDS500 Segmentation database (annotations  included). 
+It is a small, randomly selected, subset of the BSDS500 Segmentation database (annotations included). 
 
 ## Creating a  basic segmentation method
 
