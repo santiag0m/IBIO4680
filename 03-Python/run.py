@@ -74,8 +74,9 @@ montages = build_montages(selected, (256, 256), (7, 2))
 
 
 for montage in montages:
-    cv2.imshow("Montage", montage)
-    
+    plt.imshow(cv2.cvtColor(montage, cv2.COLOR_BGR2RGB))
+    plt.show()
+       
 f = open(os.path.join(os.getcwd(),'Image_selected','dictionary'),'wb')
 pickle.dump(dictionary,f)
 f.close()
