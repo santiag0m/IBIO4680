@@ -76,7 +76,7 @@ The file 'Lab5Images.tar.gz' contains the segmentation ground truth data. It has
 For example, to look at the ground truth for image ``train/55075`` we can use the following code for Matlab:
 
 ```matlab
-gt=load('Lab5Images/55075.mat')
+gt=load('BSDS_tiny/55075.mat')
 % Load segmentation from third human
 segm=gt.groundTruth{3}.Segmentation;
 image(segm) %Or imagesc?
