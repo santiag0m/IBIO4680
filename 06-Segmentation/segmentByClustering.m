@@ -21,7 +21,7 @@ switch featureSpace
 end
 
 if (~isempty(strfind(featureSpace, '+xy')))
-    x = repmat((0:n-1)', [m, 1]);
+    x = repmat((0:n-1)', [1, m]);
     y = repmat(0:m-1, [n, 1]);
     features(:, end+1) = x;
     features(:, end+1) = y(:);
