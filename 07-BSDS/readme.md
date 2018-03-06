@@ -74,15 +74,23 @@ There is little coding to do in this lab, most of the 'heavy lifting' was alread
 
 Choose two of the functions you developed during the Lab06, use those that had the best performance. Feel free to modify or enhance any algorithm based on your findings for the last lab. If you think any of the functions is too computationally expensive, this is the moment to make some adjustments. Remember the benchmark must be run with **all 200 images**.
 
-Now, adjust the function you designed in the past lab so that it works on the BSDS Benchmark. Essentially you must be able to process a full set of images (train/eval/test) and then write the segmentation results in the same format as those in '/bench_fast/data/segs'. 
+Now, adjust the function you designed in the past lab so that it works on the BSDS Benchmark. Essentially you must be able to process a full set of images (train/val/test) and then write the segmentation results in the same format as those in '/bench_fast/data/segs'. 
 
-There is, at least, one hyper-parameter for your segmentation method: K (number of clusters). Use the ``train``  and ``eval`` sets to explore the best set of values for K and any other hyper parameter.
+There is, at least, one hyper-parameter for your segmentation method: K (number of clusters). Use the ``train``  and ``val`` sets to explore the best set of values for K and any other hyper parameter.
 
 ### Testing your method
 
 Once you get the segmented images in the proper format, run the benchmark for your selected methods, also run the  benchmark for the provided UCM segmentations (at BSDS500/ucm2). Use **only** the ``test`` for comparisons.
 
 Do not forget to use different thresholds values to generate a nice curve. See http://www.eecs.berkeley.edu/Research/Projects/CS/vision/grouping/resources.html#bench for an example output.
+
+A summary of the steps required is:
+
+- Apply your function to each of the images in the test dataset
+- For each image, create a `.mat` file that contains a cell array, which contains several arrays representing the output of the function for different values of the parameter (k). Look at the bench_fast/data/segs folder for examples.
+- Run the `allBench_fast` function specifying the folder with the .mat files as `inDir`. See the second example in the `test_benchs_fast` file.
+- Generate the plot using the code from the `test_eval` function.
+
 
 
 ### Report
@@ -91,8 +99,8 @@ The report for this laboratory must include:
 - A brief description of the selected segmentation methods, why did you choose them?, did you make any modification, or  enhancements? why?
 - What are the hyper parameters of these methods, what do they mean?, how could you choose them? 
 - What  does the precision-recall curve tells us?, what would be the ideal result?
-- Results for the BSDS benchmark (full test set) for the three methods.  Do not forget to include a graphic where you compare the curves you generated for the three methods.
-- Among the methods you developed, which one works best, why? do you think your selection of K could improve/worsen the results?
+- Results for the BSDS benchmark (**full test set**) for the three methods.  Do not forget to include a graphic where you compare the curves you generated for the three methods.
+- Among the methods you developed, which one works best, why?
 - Did you beat Pablo, No? why?
 - On the last Lab, you made a simple comparison of segmentation methods, does the BSDS benchmark has similar results (i.e. your best algorithm remains the best), why? or why not?
 - What seems to be the limitations of the algorithms you developed? Again execution time and resource usage are not our main concern.
