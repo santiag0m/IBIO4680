@@ -8,11 +8,7 @@ Try to develop quality code so that you can reuse it in the following labs.
 
 ## Database
 
-The database for this lab is provided by the [ponce group](http://www-cvr.ai.uiuc.edu/ponce_grp/data/)
-
-You can download it from the following mirrors in the university (might be faster if you are connected to the university's network)
-
--   http: http://157.253.63.7/textures.tar.gz
+The database for this lab is provided by the [ponce group](http://www-cvr.ai.uiuc.edu/ponce_grp/data/). You can find it in the link as **Texture Database**.
 
 Create a folder called *data* and locate your dataset there. 
     
