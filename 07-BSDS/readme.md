@@ -89,7 +89,7 @@ A summary of the steps required is:
 - Apply your function to each of the images in the test dataset
 - For each image, create a `.mat` file that contains a cell array, which contains several arrays representing the output of the function for different values of the parameter (k). Look at the bench_fast/data/segs folder for examples.
 - Run the `allBench_fast` function specifying the folder with the .mat files as `inDir`. See the second example in the `test_benchs_fast` file.
-- Generate the plot using the code from the `test_eval` function.
+- Generate the plot using the code from the `plot_eval` function.
 
 
 
