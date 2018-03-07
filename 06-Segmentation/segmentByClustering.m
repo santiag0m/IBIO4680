@@ -21,10 +21,10 @@ switch featureSpace
 end
 
 if (~isempty(strfind(featureSpace, '+xy')))
-    x = repmat((0:n-1)', [1, m]);
+    x = repmat((0:n-1)', [m, 1]);
     y = repmat(0:m-1, [n, 1]);
-    features(:, end+1) = x;
-    features(:, end+1) = y(:);
+    features(:, end+1) = x/n;
+    features(:, end+1) = y(:)/m;
 end
 features = double(features);
 
@@ -42,7 +42,8 @@ switch clusteringMethod
         segmentation = cluster(GMModel, features);
         segmentation = reshape(segmentation, [n m]);
     case 'hierarchical'
-        segmentation = clusterdata(features,'Maxclust', numberOfClusters);
+        H = linkage(features);
+        segmentation = cluster(H, 'maxclust', numberOfClusters);
         segmentation = reshape(segmentation, [n m]);
     case 'watershed'
         image = rgb2gray(rgbImage);
