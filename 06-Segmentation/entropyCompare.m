@@ -18,24 +18,26 @@ for i=1:r
     er = discEntropy(estimate(i,:),k); % Estimate entropy per row
     tr = discEntropy(truth(i,:),k); % Truth entropy per row
     dr(i) = abs(er-tr);
-    mr(i) = max(abs([tr,log(k)-tr])); % Maximum entropy difference possible
+    %mr(i) = max(abs([tr,log(k)-tr])); % Maximum entropy difference possible
 end
 
 for j=1:c
     ec = discEntropy(estimate(:,j),k); % Estimate entropy per column
     tc = discEntropy(truth(:,j),k); % Truth entropy per column
     dc(j) = abs(ec-tc);
-    mc(j) = max(abs([tc,log(k)-tc])); % Maximum entropy difference possible
+    %mc(j) = max(abs([tc,log(k)-tc])); % Maximum entropy difference possible
     for i=1:r
         d = [dr(i),dc(j)];
-        md = [mr(i),mc(j)];
+        %md = [mr(i),mc(j)];
         [val,ind] = max(d);
-        coef(i,j) = val/md(ind);
+        %coef(i,j) = val/md(ind);
+        coef(i,j) = val;
     end
 end
 
-coef = sum(coef(:))/(r*c); % Normalized total entropy difference
-coef = 1-coef; % Similarity
+coef = sum(coef(:))/(r*c); % Average entropy difference
+%coef = 1- coef % Similarity (Reference)
+coef = 1/(1+coef); % Similarity (Non Reference)
 
 
 function etp = discEntropy(x,k)
