@@ -76,4 +76,4 @@ Our good man waldo is hidden somewhere in the dataset, can you find him? Tip use
 
 
 ## Deadline
-**4 April 11:59** As usual upload your report on github. Only submit the **pdf** and the code. <<forget the ANSWER folder>>. It is important that you remember to depure space on your repo since I am having a bad time cloning all of them. 
+**4 April 11:59** As usual upload your report on github. Only submit the **pdf** and the code. <**forget the ANSWER folder**>. It is important that you remember to depure space on your repo since I am having a bad time cloning all of them. 
