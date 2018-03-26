@@ -11,15 +11,13 @@ k = logspace(0.31,1.5,k);
 k = round(k);
 k = [2, 3, 4, 5, 6, 7];
 
-fl = ls(imDir);
-fl = strsplit(fl);
-fl(1:2) = [];
+fl = dir(fullfile(imDir,'*.jpg'));
 total = numel(fl);
 
 for i=1:total
     % Segmentation matrix
     segs = cell(numel(k),1);
-    imname = fl{i};
+    imname = fl(i).name;
     img = imread(fullfile(imDir,imname));
     img = imresize(img,0.25); % Run faster
     for w=1:2
@@ -35,7 +33,7 @@ for i=1:total
             try
                 segs{j}=segmentByClustering(img,'hsv',segfun,k(j));
             catch
-                segs{j}=ones(img);
+                segs{j}=ones(size(img));
                 warning('Selected method did not found a solution');
             end
             segs{j}=imresize(segs{j},4,'nearest');
@@ -43,7 +41,7 @@ for i=1:total
         end
         save(matname,'segs');
     end
-    disp(i*100/total)
+    disp(i/total)
 end
 
 
