@@ -1,5 +1,5 @@
 
-globDir = '/datos1/vision/GonzalezMolina/BSR/BSDS500/data';
+globDir = '~/BSR/BSDS500/data';
 imDir = fullfile(globDir,'images','test');
 outDir1 = fullfile(globDir,'segs','function1');
 mkdir(outDir1)
@@ -14,8 +14,9 @@ k = [2, 3, 4, 5, 6, 7];
 fl = ls(imDir);
 fl = strsplit(fl);
 fl(1:2) = [];
+total = numel(fl);
 
-for i=1:numel(fl)
+for i=1:total
     % Segmentation matrix
     segs = cell(numel(k),1);
     imname = fl{i};
@@ -31,13 +32,18 @@ for i=1:numel(fl)
             segfun = 'hierarchical'
         end
         for j=1:numel(k)
-            segs{j}=segmentByClustering(img,'hsv',segfun,k(j));
+            try
+                segs{j}=segmentByClustering(img,'hsv',segfun,k(j));
+            catch
+                segs{j}=ones(img);
+                warning('Selected method did not found a solution');
+            end
             segs{j}=imresize(segs{j},4,'nearest');
             disp(j)
         end
         save(matname,'segs');
     end
-    disp(i)
+    disp(i*100/total)
 end
 
 
