@@ -35,18 +35,12 @@ for idx, data in enumerate(train):
 
 #Computer textons from filter
 from computeTextons import computeTextons
+print('computing textons ...')
 map, textons = computeTextons(tfim, k)
 
 #Calculate texton representation with current texton dictionary
 
 from assignTextons import assignTextons
-tmaps = []
-labels = []
-
-for idx, data in enumerate(test):
-    print('texton map for test image {}'.format(idx))
-    tmaps.append(assignTextons(fbRun(fb,data['image'][:64,:64]),textons.transpose()))
-    labels.append(data['label'])
 
 trainmaps = []
 trainlabels = []
@@ -56,6 +50,15 @@ for idx, data in enumerate(train):
     trainmaps.append(assignTextons(fbRun(fb,data['image'][:64,:64]),textons.transpose()))
     trainlabels.append(data['label'])
 
+tmaps = []
+labels = []
+
+for idx, data in enumerate(test):
+    print('texton map for test image {}'.format(idx))
+    tmaps.append(assignTextons(fbRun(fb,data['image'][:64,:64]),textons.transpose()))
+    labels.append(data['label'])
+
+
 def histc(X, bins):
     import numpy as np
     map_to_bins = np.digitize(X,bins)
@@ -64,47 +67,66 @@ def histc(X, bins):
         r[i-1] += 1
     return np.array(r)
 
-hgrams = np.zeros((len(tmaps),k))
-
-for idx, tmap in enumerate(tmaps):
-    print('histogram for test image {}'.format(idx))
-    hgrams[idx,:]=histc(tmap.flatten(), np.arange(k))
-
 trainhgrams = np.zeros((len(trainmaps),k))
 
 for idx, tmap in enumerate(trainmaps):
     print('histogram for train image {}'.format(idx))
-    trainhgrams[idx,:]=histc(tmap.flatten(), np.arange(k))
+    trainhgrams[idx,:]=(histc(tmap.flatten(), np.arange(k)))/tmap.size
+
+
+
+hgrams = np.zeros((len(tmaps),k))
+
+for idx, tmap in enumerate(tmaps):
+    print('histogram for test image {}'.format(idx))
+    hgrams[idx,:]=(histc(tmap.flatten(), np.arange(k)))/tmap.size
 
 
 from sklearn.metrics.pairwise import chi2_kernel
-
-chsq = chi2_kernel(hgrams)
-
-trainchsq = chi2_kernel(trainhgrams)
-
 from sklearn.neighbors import KNeighborsClassifier
 
 kn = 5
 
 print('training KNN classifier ...')
 
-neigh = KNeighborsClassifier(n_neighbors=kn,algorithm='brute',metric='precomputed')
+'''neigh = KNeighborsClassifier(n_neighbors=kn,algorithm='brute',metric='precomputed')
 neigh.fit(trainchsq, trainlabels)
 
-prlabels = neigh.predict(chsq)
+prlabels = neigh.predict(chsq)'''
+
+def chi_squared(X, Y):
+    distance = chi2_kernel(X.reshape(1,-1),Y.reshape(1,-1))
+    #distance = np.sum(((X-Y)**2))
+    return distance
+
+neigh = KNeighborsClassifier(n_neighbors=kn, metric=chi_squared)
+neigh.fit(trainhgrams, trainlabels)
+prlabels = neigh.predict(hgrams)
 
 from sklearn.metrics import accuracy_score
 
 aca_neigh = accuracy_score(labels, prlabels)
 
+
+def kernel(X, Y):
+    distance = 1-np.sum(np.minimum(X,Y))
+    return distance
+
+neigh = KNeighborsClassifier(n_neighbors=kn, metric=kernel)
+neigh.fit(trainhgrams, trainlabels)
+prlabels = neigh.predict(hgrams)
+aca_neigh = accuracy_score(labels, prlabels)
+print('ACA_KNN',aca_neigh)
+
+
 from sklearn.ensemble import RandomForestClassifier
 
-rf = RandomForestClassifier(max_depth=2, random_state=0)
-rf.fit(trainhgrams, trainlabels)
+print('training RF classifier ...')
 
+rf = RandomForestClassifier(n_estimators=700 , max_depth=6, random_state=0)
+rf.fit(trainhgrams, trainlabels)
 rflabels = rf.predict(hgrams)
 aca_rf = accuracy_score(trainlabels, rflabels)
+print('ACA_RF',aca_rf)
+
 print('Done!')
-
-

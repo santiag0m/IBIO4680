@@ -7,7 +7,7 @@ outDir2 = fullfile(globDir,'segs','function2');
 mkdir(outDir2)
 
 k = 20;
-k = logspace(0.3,1.5,k);
+k = linspace(2,30,k);
 k = round(k);
 
 fl = dir(fullfile(imDir,'*.jpg'));
