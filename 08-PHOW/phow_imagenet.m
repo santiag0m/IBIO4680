@@ -58,10 +58,10 @@ function phow_imagenet()
 conf.calDir = 'data/imageNet200' ;
 conf.dataDir = 'data/' ;
 conf.autoDownloadData = true ;
-conf.numTrain = 20 ;
+conf.numTrain = 30 ;
 conf.numTest = 100 ;
 conf.numClasses = 200 ;
-conf.numWords = 800 ;
+conf.numWords = 1000 ;
 conf.numSpatialX = [2 4] ;
 conf.numSpatialY = [2 4] ;
 conf.quantizer = 'kdtree' ;
@@ -76,11 +76,11 @@ conf.phowOpts = {'Step', 3} ;
 conf.clobber = false ;
 % conf.tinyProblem = true ;
 conf.tinyProblem = false ; % Added for ImageNet
-conf.prefix = 'baseline' ;
+conf.prefix = 'imageNet-baseline' ;
 conf.randSeed = 1 ;
 
 if conf.tinyProblem
-  conf.prefix = 'tiny' ;
+  conf.prefix = 'imageNet-tiny' ;
   conf.numClasses = 5 ;
   conf.numSpatialX = 2 ;
   conf.numSpatialY = 2 ;
@@ -116,9 +116,11 @@ if ~exist(conf.calDir, 'dir') || ...
 end
 
 if ~exist(fullfile(conf.calDir, 'acorn'),'dir')
-  conf.calDir = fullfile(conf.calDir, 'train') ;
   conf.calTestDir = fullfile(conf.calDir,'test'); % Added test folder
   testFolder = true;
+  conf.calDir = fullfile(conf.calDir, 'train') ;
+else
+  testFolder = false;
 end
 
 % --------------------------------------------------------------------
@@ -131,7 +133,7 @@ classes = {classes(3:conf.numClasses+2).name} ;
 images = {} ;
 imageClass = {} ;
 for ci = 1:length(classes)
-  ims = dir(fullfile(conf.calDir, classes{ci}, '*.jpg'))' ;
+  ims = dir(fullfile(conf.calDir, classes{ci}, '*.JPEG'))' ;
   if ~testFolder
       ims = vl_colsubset(ims, conf.numTrain + conf.numTest) ;
   else
@@ -142,6 +144,8 @@ for ci = 1:length(classes)
   imageClass{end+1} = ci * ones(1,length(ims)) ;
 end
 
+disp('Number of classes')
+disp(length(classes))
 
 if ~testFolder % Use code default for test sorting
     selTrain = find(mod(0:length(images)-1, conf.numTrain+conf.numTest) < conf.numTrain) ;
@@ -150,7 +154,7 @@ else % Add new images to the current dataset
     lastTrain = length(images);
     selTrain = 1:lastTrain;
     for ci = 1:length(classes)
-      ims = dir(fullfile(conf.calTestDir, classes{ci}, '*.jpg'))' ;
+      ims = dir(fullfile(conf.calTestDir, classes{ci}, '*.JPEG'))' ;
       ims = vl_colsubset(ims, conf.numTest) ;
       ims = cellfun(@(x)fullfile(classes{ci},x),{ims.name},'UniformOutput',false) ;
       images = {images{:}, ims{:}} ;
@@ -159,6 +163,14 @@ else % Add new images to the current dataset
     selTest = lastTrain+1:length(images);
 end
 
+disp('Train Folder')
+disp(conf.calDir)
+disp('Test Folder')
+disp(conf.calTestDir)
+disp('Number of training samples')
+disp(length(selTrain))
+disp('Number of testing samples')
+disp(length(selTest))
 
 imageClass = cat(2, imageClass{:}) ;
 
@@ -301,11 +313,13 @@ confus = vl_binsum(confus, ones(size(idx)), idx) ;
 
 % Plots
 figure(1) ; clf;
-subplot(1,2,1) ;
-imagesc(scores(:,[selTrain selTest])) ; title('Scores') ;
-set(gca, 'ytick', 1:length(classes), 'yticklabel', classes) ;
-subplot(1,2,2) ;
+% subplot(1,2,1) ;
+% imagesc(scores(:,[selTrain selTest])) ; title('Scores') ;
+% set(gca, 'ytick', 1:length(classes), 'yticklabel', classes) ;
+% subplot(1,2,2) ;
+
 imagesc(confus) ;
+set(gca, 'ytick', 1:length(classes), 'yticklabel', classes) ;
 title(sprintf('Confusion matrix (%.2f %% accuracy)', ...
               100 * mean(diag(confus)/conf.numTest) )) ;
 print('-depsc2', [conf.resultPath '.ps']) ;
@@ -319,7 +333,7 @@ function im = standarizeImage(im)
 % -------------------------------------------------------------------------
 
 im = im2single(im) ;
-if size(im,1) > 480, im = imresize(im, [480 NaN]) ; end
+if size(im,1) > 240, im = imresize(im, [240 NaN]) ; end % 480 >>> 240
 
 % -------------------------------------------------------------------------
 function hist = getImageDescriptor(model, im)
