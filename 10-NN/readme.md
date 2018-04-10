@@ -1,6 +1,6 @@
 # Neural Networks Tutorial
 
-In this lab we will introduce the very basic concepts of neural networks using the classic (MNIST)[http://yann.lecun.com/exdb/mnist/] dataset. Just like the very first Labs, this is a tutorial, hence there are no deliverables or deadlines.
+In this lab we will introduce the very basic concepts of neural networks using the classic [MNIST](http://yann.lecun.com/exdb/mnist/]) dataset. Just like the very first Labs, this is a tutorial, hence there are no deliverables or deadlines.
 
 <p align="center"><img width="40%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/MnistExamples.png/440px-MnistExamples.png" /></p>
 
@@ -53,7 +53,7 @@ pip install torchvision
 https://github.com/pytorch/pytorch#from-source
 ```
 
-The full scripts for this Lab are avilable [here](fcMNIST.py), [here](fcMNIST2.py) and [here](convMNIST.py), no comments though.
+The full scripts for this Lab are avilable [here](fcMNIST.py), [here](fcMNIST2.py) and [here](convMNIST.py), respectively, no comments though.
 
 ### Handwritten digits recognition using Neural Networks
 The data for the lab is available online and can be automatically download using the Keras library, it is as simple as:
@@ -116,6 +116,7 @@ print ('X_test.shape ', X_test.shape)
 
 ```
 
+## 1. Small network
 Now we can build a Neural Network to classify the MNIST data. As first example, we will use a minimal 1 layer 1 fully connected neural network
 
 
@@ -206,7 +207,7 @@ what does the loss value over the epochs tells you?, why the does the accuracy s
 ```
 
 
-## A Bigger network
+## 2. A Bigger network
 
 The result on our first network was rather lackluster, but remember it is the smallest network than can be designed, and is still better than a random classification, we are probably heading in the right direction and just need a bigger network to improve the results, let's modify the network to use 10 neurons on the first layer, followed by our current 1 neuron layer.
 
@@ -240,7 +241,7 @@ print("The number of parameters {}".format(num_params))
 
 This time our classification accuracy is close to 0.4, a big jump that suggest to keep adding several more layers (convolutional and non linear filters) which will, likely, improve our results. Try adding several more layers to the current network, what's the best accuracy you can get?
 
-## A convolutional neural network
+## 3. A convolutional neural network
 
 The very first step in the first example was to destroy the images spatial information in order to work  with 1d neural layers. Convolutional neural layers will allow us to keep this spatial information.
 
