@@ -1,6 +1,8 @@
 # Neural Networks Tutorial
 
-In this lab we will introduce the very basic concepts of neural networks using the classic MNIST dataset. Just like the very first Labs, this is a tutorial, hence there are no deliverables or deadlines.
+In this lab we will introduce the very basic concepts of neural networks using the classic (MNIST)[http://yann.lecun.com/exdb/mnist/] dataset. Just like the very first Labs, this is a tutorial, hence there are no deliverables or deadlines.
+
+<p align="center"><img width="40%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/MnistExamples.png/440px-MnistExamples.png" /></p>
 
 
 ## Resources
