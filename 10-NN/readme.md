@@ -304,5 +304,7 @@ Loss = nn.CrossEntropyLoss()
 While there are no deliverables for this lab, you might want to play around with this dataset and the convolutional neural layers.
 
 # CHALLENGE
-Although we do not have deliverables for this have, we do have a small challenge that I will explain in detail during our class. Just keep in mind that the winner(s) of this challenge will be able to **replace the worst grade** with a beautiful **5**. To this end, I will create a leaderboard so you can track the best accuracy and try to beat him/her.
+Although we do not have deliverables for this lab, we do have a small challenge :D. 
+I will explain it in detail during our class. Just keep in mind that the winner(s) of this challenge will be able to **replace the worst grade** with a beautiful **5**. 
+I will create a leaderboard so you can track in real time the best accuracy and try to beat him/her.
 
