@@ -50,15 +50,15 @@ Go through [Part 5](http://www.robots.ox.ac.uk/~vgg/practicals/cnn/index.html#pa
 
 We will fall back to the texture dataset (because those pesky local patterns have been asking for it!!). Unlike the set you already know from Lab5, we randomly sampled *128x128* patches from each image in the set in order to create a 'new' texture dataset with 20000 images (15000 train - 2500 val - 2500 test), this sampling is a mere technical shortcut, as larger images will require a lot more time to process.
 
-The file [texturedb](http://157.253.63.7/texturesCNN.zip) contains a zip file with the new dataset along with their corresponding labels. Note that all the test images have '0' as label (obviously).
+The file [TexturesDB](http://157.253.63.7/texturesCNN.zip) contains a zip file with the new dataset with their corresponding labels. Note that all the test images have '0' as label (obviously).
 
 ### 2.1. Optional
 
-Additionally, alike the set you already know from Lab5, you are encouraged to use different image size to train/test your network. Remember the image size that got the best performance from Lab5? Well, it is time to bring it back from oblivion. For instance: 64x64, 128x128, 256x256, 227x227 for AlexNet. If you wish, you can go even further: 224x224 for VGG, 299x299 for ResNet. 
+Additionally, alike the set you already know from Lab5, you are encouraged to use different image size to train/test your network. Remember the image size that got the best performance from Lab5? Well, it is time to bring it back from oblivion. For instance: 64x64, 128x128, 256x256, 227x227 for AlexNet. If you wish, you can go even further: 224x224 for [VGG](https://github.com/pytorch/vision/blob/master/torchvision/models/vgg.py), 299x299 for [ResNet](https://github.com/pytorch/vision/blob/master/torchvision/models/resnet.py). Take a look at the pytorch [model-zoo](https://github.com/pytorch/vision/tree/master/torchvision/models). 
 
 **Do not waste too much time trying different sizes. Focus on the network.**
 
-**It is important to bear in mind that the full dataset (without random sampling) is about 1000 images. If you use AlexNet or another more complex/deeper architectures, you will probably overtfit. Additionaly, you need to upscale the 128x128 patches to the desired size (I know it is kind of weird)** 
+**It is important to bear in mind that the full dataset (without random sampling) is about 1000 images. If you use AlexNet or another more complex/deeper architectures, you will certainly overtfit. Moreover, you'll need to upscale the 128x128 patches to the desired size (I know it is kind of weird)** 
 
 ### 2.2. Data Augmentation
 
