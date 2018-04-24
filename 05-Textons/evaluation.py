@@ -31,17 +31,16 @@ def kernel(X, Y):
     distance = 1-np.sum(np.minimum(X,Y))
     return distance
 idx = np.arange(40)
-for i in idx:
-    kn = i+1
-    print('K', kn)
-    t = time.time()
-    neigh = KNeighborsClassifier(n_neighbors=kn, metric=kernel)
-    neigh.fit(trainhgrams, trainlabels)
-    prlabels = neigh.predict(hgrams)
-    confusion_matrix_KNN = confusion_matrix(labels, prlabels)
-    aca_neigh = accuracy_score(labels, prlabels)
-    print('ACA_KNN', aca_neigh)
-    print(time.time()-t)
+kn = 12
+print('K', kn)
+t = time.time()
+neigh = KNeighborsClassifier(n_neighbors=kn,weigths='uniform',  metric=kernel)
+neigh.fit(trainhgrams, trainlabels)
+prlabels = neigh.predict(hgrams)
+confusion_matrix_KNN = confusion_matrix(labels, prlabels)
+aca_neigh = accuracy_score(labels, prlabels)
+print('ACA_KNN', aca_neigh)
+print(time.time()-t)
 
 rf = RandomForestClassifier(n_estimators=700 , max_depth=6, random_state=0)
 rf.fit(trainhgrams, trainlabels)
