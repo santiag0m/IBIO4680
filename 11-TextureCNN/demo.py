@@ -60,6 +60,10 @@ d = model.state_dict()
 print('\n')
 print('---------------------Parameters---------------------')
 print('\n')
+cum = 0
 for key in list(d.keys()):
-    print('Name:\t'+key+'\tNum_Params:\t{}'.format(np.prod(d[key].numpy().shape)))
+    pnum = np.prod(d[key].numpy().shape)
+    cum += pnum
+    print('Name:\t'+key+'\tNum_Params:\t{}'.format(pnum))
+print('Total parameters: \t {}'.format(cum))
 print('\n')
